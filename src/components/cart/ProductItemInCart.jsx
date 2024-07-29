@@ -1,6 +1,8 @@
 
+import { useContext } from 'react';
 import './ProductItemInCart.css'
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { AppContext } from '../../context/appContext';
 
 function ProductItemInCart({
   id,
@@ -9,11 +11,13 @@ function ProductItemInCart({
   image,
   count,
   totalPrice,
-  setAddedProducts,
-  addedProducts,
-  setAddedToCart,
-  addedToCart
+
 }) {
+
+const { addedToCart, setAddedToCart, addedProducts, setAddedProducts } =
+  useContext (AppContext );
+
+
   const decreaseHandler = () => {
     const updateAddedProducts = [...addedProducts];
     updateAddedProducts.map((product) => {

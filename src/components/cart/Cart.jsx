@@ -1,8 +1,14 @@
+import { useContext } from 'react';
 import './Cart.css'
 import ProductItemInCart from './ProductItemInCart';
+import { AppContext } from '../../context/appContext';
+
+function Cart() {
+
+const { addedToCart, setAddedToCart, addedProducts, setAddedProducts } =
+  useContext(AppContext);
 
 
-function Cart({ addedToCart, setAddedToCart, addedProducts ,setAddedProducts}) {
   return (
     <div className="cartContainer">
       {addedToCart > 0 ? (
@@ -11,10 +17,7 @@ function Cart({ addedToCart, setAddedToCart, addedProducts ,setAddedProducts}) {
             <ProductItemInCart
               key={product.id}
               {...product}
-              addedProducts={addedProducts}
-              setAddedProducts={setAddedProducts}
-              addedToCart={addedToCart}
-              setAddedToCart={setAddedToCart}
+      
             />
           ))}
         </>
