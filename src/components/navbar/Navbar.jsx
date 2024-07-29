@@ -1,18 +1,19 @@
-import { useState } from 'react';
+
 import './Navbar.css'
 import { TiShoppingCart } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 
-function Navbar() {
-    const[addedToCart,setAddedToCart]=useState(0)
+function Navbar({addedToCart,setAddedToCart}) {
+   
     return (
       <nav>
         <p>
-          <a href=" #">home</a>
+          <Link to="/">Home</Link>
         </p>
         <p className="bag">
-          <a href="#">
+          <Link to="/cart ">
             <TiShoppingCart color="white" size="30px" />
-          </a>
+          </Link>
           {addedToCart > 0 && <span>{addedToCart}</span>}
         </p>
       </nav>

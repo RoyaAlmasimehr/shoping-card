@@ -1,13 +1,43 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Navbar from "./components/navbar/Navbar";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import CartPage from "./pages/cart/CartPage";
+import { useState } from "react";
 
 function App() {
+
+   const [addedToCart, setAddedToCart] = useState(0);
+   const[addedProducts,setAddedProducts]=useState([])
+
   return (
-    <>
-      <Navbar />
-      <h1>shpping card</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              addedToCart={addedToCart}
+              setAddedToCart={setAddedToCart}
+              addedProducts={addedProducts}
+              setAddedProducts={setAddedProducts}
+            />
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <CartPage
+              addedToCart={addedToCart}
+              setAddedToCart={setAddedToCart}
+              addedProducts={addedProducts}
+              setAddedProducts={setAddedProducts}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

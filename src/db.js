@@ -1,4 +1,4 @@
-const db = [
+const productsList = [
   {
     id: 1,
     name: "galexy A14",
@@ -50,4 +50,4 @@ const db = [
   },
 ];
 
-export default db;
+export default productsList;
