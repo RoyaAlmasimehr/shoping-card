@@ -1,18 +1,18 @@
+import { createContext, useReducer } from "react";
+import { reducer } from "../reducer";
+export const AppContext = createContext();
 
-import {useState, createContext } from "react";
 
 
+function AppProvider({ children }) {
+  const initialState = { addedToCart: 0, addedProducts: [] };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-export const AppContext =createContext()
-
-function AppProvider({children}) {
-
-       const [addedToCart, setAddedToCart] = useState(0);
-       const [addedProducts, setAddedProducts] = useState([]);
-       const contextValue ={addedProducts,addedToCart,setAddedProducts,setAddedToCart}
-    return (
-        <AppContext.Provider value={contextValue}  >{children} </AppContext.Provider> 
-    )
+  return (
+    <AppContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export default AppProvider;

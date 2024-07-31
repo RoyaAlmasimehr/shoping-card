@@ -1,13 +1,17 @@
-import { useContext } from 'react';
+//  
+import { useSelector } from 'react-redux';
 import './Cart.css'
 import ProductItemInCart from './ProductItemInCart';
-import { AppContext } from '../../context/appContext';
+// import { AppContext } from '../../context/appContext';
 
 function Cart() {
 
-const { addedToCart, setAddedToCart, addedProducts, setAddedProducts } =
-  useContext(AppContext);
+// const { addedToCart,  addedProducts,  } =
+//   useContext(AppContext).state 
+  
 
+    const { addedToCart, addedProducts } = useSelector((store) => store);
+  
 
   return (
     <div className="cartContainer">

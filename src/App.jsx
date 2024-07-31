@@ -8,7 +8,6 @@ import CartPage from "./pages/cart/CartPage";
 
 
 
-
 function App() {
 
 
@@ -17,11 +16,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cart" element={<CartPage />} />
-      </Routes>
-    
+ 
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+     
     </BrowserRouter>
   );
 }

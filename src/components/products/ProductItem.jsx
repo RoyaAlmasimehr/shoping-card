@@ -1,43 +1,25 @@
 import "./ProductItem.css";
 import productsList from "../../db";
-import { useContext } from "react";
-import { AppContext } from "../../context/appContext";
+import { useDispatch } from "react-redux";
+// import { useContext } from "react";
+// import { AppContext } from "../../context/appContext";
 
-function ProductItem({
-  id,
-  name,
-  price,
-  image,
- 
-})
-
-   
-
-{
-  const { addedToCart, setAddedToCart, addedProducts, setAddedProducts } =
-    useContext(AppContext);
+function ProductItem(data){
 
 
+const{id,name,price,image}=data
 
-  const addToCartHandler = () => {
-    if (isProductExistInCart()) {
-      const updateAddedProducts = [...addedProducts];
-      updateAddedProducts.map((product) => {
-        if (product.id == id) {
-          product.count += 1;
-          product.totalPrice = product.count * product.price;
-        }
-        setAddedProducts(updateAddedProducts);
-        return;
-      });
-    } else {
-      setAddedToCart(addedToCart + 1);
-      const product = productsList.find((product) => product.id == id);
-      product.count = 1;
-      product.totalPrice = product.price * product.count;
-      setAddedProducts((prevState) => [...prevState, product]);
-    }
-  };
+
+        // const {dispatch}=useContext(AppContext);
+    
+const dispatch =useDispatch()
+
+ const addToCartHandler = () => {
+   dispatch({ type: "ADD_TO_CART", data });
+
+
+
+ };
 
   const isProductExistInCart = () => {
     return addedProducts.some((product) => product.id == id);

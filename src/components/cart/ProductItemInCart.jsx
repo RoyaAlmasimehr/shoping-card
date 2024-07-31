@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import './ProductItemInCart.css'
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AppContext } from '../../context/appContext';
+import { useDispatch } from 'react-redux';
 
 function ProductItemInCart({
   id,
@@ -14,38 +15,37 @@ function ProductItemInCart({
 
 }) {
 
-const { addedToCart, setAddedToCart, addedProducts, setAddedProducts } =
-  useContext (AppContext );
+const dispatch =
+ useDispatch()
 
 
   const decreaseHandler = () => {
-    const updateAddedProducts = [...addedProducts];
-    updateAddedProducts.map((product) => {
-      if (product.id == id) {
-        product.count -= 1;
-        product.totalPrice = product.count * product.price;
-        setAddedProducts(updateAddedProducts);
-      }
-    });
+dispatch({ type: "DECREASE_IN_CART" ,id});
+
+
+
+
   };
 
   const increaseHandler = () => {
-    const updateAddedProducts = [...addedProducts];
-    updateAddedProducts.map((product) => {
-      if (product.id == id) {
-        product.count += 1;
-        product.totalPrice = product.count * product.price;
-        setAddedProducts(updateAddedProducts);
-      }
-    });
+
+dispatch({ type: "INCREASE_IN_CART",id });
+
+
+
+  
   };
 
   const removeHandler = () => {
-    const updateAddedProducts = addedProducts.filter(
-      product => product.id !== id
-    );
-    setAddedProducts(updateAddedProducts);
-    setAddedToCart(addedToCart-1)
+
+dispatch({ type: "REMOVE_FROM_CART" ,id });
+
+
+
+
+
+
+      
   };
 
   return (
