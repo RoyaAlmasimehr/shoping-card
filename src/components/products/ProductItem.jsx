@@ -3,6 +3,7 @@ import productsList from "../../db";
 import { useDispatch } from "react-redux";
 // import { useContext } from "react";
 // import { AppContext } from "../../context/appContext";
+import { addToCart } from "../../Redux/slice";
 
 function ProductItem(data){
 
@@ -15,7 +16,7 @@ const{id,name,price,image}=data
 const dispatch =useDispatch()
 
  const addToCartHandler = () => {
-   dispatch({ type: "ADD_TO_CART", data });
+   dispatch(addToCart(data));
 
 
 

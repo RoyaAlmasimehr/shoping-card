@@ -4,6 +4,7 @@ import './ProductItemInCart.css'
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AppContext } from '../../context/appContext';
 import { useDispatch } from 'react-redux';
+import {increaseInCart,decreaseInCart,removeFromCart} from '../../Redux/slice';
 
 function ProductItemInCart({
   id,
@@ -20,7 +21,7 @@ const dispatch =
 
 
   const decreaseHandler = () => {
-dispatch({ type: "DECREASE_IN_CART" ,id});
+dispatch(decreaseInCart(id));
 
 
 
@@ -29,7 +30,7 @@ dispatch({ type: "DECREASE_IN_CART" ,id});
 
   const increaseHandler = () => {
 
-dispatch({ type: "INCREASE_IN_CART",id });
+dispatch(increaseInCart(id ));
 
 
 
@@ -38,7 +39,7 @@ dispatch({ type: "INCREASE_IN_CART",id });
 
   const removeHandler = () => {
 
-dispatch({ type: "REMOVE_FROM_CART" ,id });
+dispatch(removeFromCart(id));
 
 
 
